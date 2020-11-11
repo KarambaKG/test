@@ -18,7 +18,7 @@
       <tr>
         <td><%= blog.title %></td>
         <td><%= blog.text %></td>
-        <td><%= blog.category_id %></td>
+        <td><%= blog.category.name %></td>
         <td><%= blog.join_time %></td>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
@@ -30,4 +30,5 @@
 
 <br>
 
-<%= link_to 'New Blog', new_blog_path %>
+<%= link_to 'New Blog', new_blog_path %> <br>
+<%= link_to 'Look Categories', categories_path %>
