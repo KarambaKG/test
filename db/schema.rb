@@ -10,15 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_091136) do
+ActiveRecord::Schema.define(version: 2020_11_16_092739) do
+
+  create_table "blog_categories", force: :cascade do |t|
+    t.integer "blog_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["blog_id"], name: "index_blog_categories_on_blog_id"
+    t.index ["category_id"], name: "index_blog_categories_on_category_id"
+  end
 
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "text"
-    t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_blogs_on_category_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -27,5 +34,6 @@ ActiveRecord::Schema.define(version: 2020_11_14_091136) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "blogs", "categories"
+  add_foreign_key "blog_categories", "blogs"
+  add_foreign_key "blog_categories", "categories"
 end

@@ -8,7 +8,7 @@
       <th>Title</th>
       <th>Text</th>
       <th>Category</th>
-      <th>Join Time</th>
+      <th>Time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,8 +18,9 @@
       <tr>
         <td><%= blog.title %></td>
         <td><%= blog.text %></td>
-        <td><%= blog.category.name %></td>
-        <td><%= blog.join_time %></td>
+        <td><%= blog.categories.pluck(:name).join(' ') %> </td>
+<!--        <td><%#= blog.categories.map(&:name) %></td>-->
+        <td><%= blog.categories.pluck(:updated_at) %></td>
         <td><%= link_to 'Show', blog %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>

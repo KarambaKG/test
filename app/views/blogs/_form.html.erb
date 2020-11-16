@@ -25,11 +25,6 @@
     <%= form.collection_select :category_id, Category.order(:name),:id,:name, include_blank: true %>
   </div>
 
-  <div>
-    <%= form.hidden_field :join_time, value: Time.current %>
-  </div>
-
-
 
   <div class="actions">
     <%= form.submit %>
